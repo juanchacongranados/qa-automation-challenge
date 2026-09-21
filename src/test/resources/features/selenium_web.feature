@@ -13,3 +13,8 @@ Feature: Selenium website navigation
     Given Juan opens the Selenium website
     When he navigates to the Documentation section
     Then the Selenium documentation page should be displayed
+
+Scenario: Search Selenium documentation
+    Given Juan opens the Selenium website
+    When he searches for "WebDriver"
+    Then the search results should contain "WebDriver"

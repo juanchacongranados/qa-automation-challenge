@@ -18,6 +18,12 @@ import io.cucumber.java.en.When;
 
 import com.juanchacon.qa.questions.DocumentationHeading;
 
+import com.juanchacon.qa.tasks.SearchSeleniumDocumentation;
+
+import com.juanchacon.qa.questions.SearchResults;
+
+import static org.hamcrest.Matchers.hasItem;
+
 public class SeleniumWebStepDefinitions {
 
     @Given("{word} opens the Selenium website")
@@ -33,6 +39,13 @@ public class SeleniumWebStepDefinitions {
     public void heNavigatesToTheDocumentationSection() {
         OnStage.theActorInTheSpotlight().attemptsTo(
                 NavigateToDocumentation.section()
+        );
+    }
+
+    @When("he searches for {string}")
+    public void heSearchesFor(String searchTerm) {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                SearchSeleniumDocumentation.forTerm(searchTerm)
         );
     }
 
@@ -62,4 +75,15 @@ public class SeleniumWebStepDefinitions {
                 seeThat(PageTitle.displayed(), containsString(expectedTitle))
         );
     }
+
+    @Then("the search results should contain {string}")
+    public void theSearchResultsShouldContain(String searchTerm) {
+        OnStage.theActorInTheSpotlight().should(
+                seeThat(
+                        SearchResults.displayed(),
+                        hasItem(containsString(searchTerm))
+                )
+        );
+    }
+
 }

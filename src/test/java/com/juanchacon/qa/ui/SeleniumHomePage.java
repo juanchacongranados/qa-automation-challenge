@@ -14,6 +14,18 @@ public class SeleniumHomePage {
     public static final Target DOCUMENTATION_LINK = Target
             .the("Documentation navigation link")
             .located(By.cssSelector("a.nav-link[href='/documentation']"));
+
+    public static final Target SEARCH_BUTTON = Target
+        .the("Selenium documentation search button")
+        .located(By.cssSelector(".DocSearch-Button"));
+
+    public static final Target SEARCH_INPUT = Target
+            .the("Selenium documentation search input")
+            .located(By.id("docsearch-input"));
+
+    public static final Target SEARCH_RESULTS = Target
+            .the("Selenium documentation search results")
+            .located(By.cssSelector(".DocSearch-Hit"));
             
     private SeleniumHomePage() {
     }
