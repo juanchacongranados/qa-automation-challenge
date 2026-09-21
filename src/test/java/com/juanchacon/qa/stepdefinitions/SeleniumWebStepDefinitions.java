@@ -13,6 +13,11 @@ import static org.hamcrest.Matchers.containsString;
 
 import com.juanchacon.qa.ui.SeleniumHomePage;
 
+import com.juanchacon.qa.tasks.NavigateToDocumentation;
+import io.cucumber.java.en.When;
+
+import com.juanchacon.qa.questions.DocumentationHeading;
+
 public class SeleniumWebStepDefinitions {
 
     @Given("{word} opens the Selenium website")
@@ -21,6 +26,23 @@ public class SeleniumWebStepDefinitions {
 
         OnStage.theActorCalled(actorName).attemptsTo(
                 OpenSeleniumWebsite.homePage()
+        );
+    }
+
+    @When("he navigates to the Documentation section")
+    public void heNavigatesToTheDocumentationSection() {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                NavigateToDocumentation.section()
+        );
+    }
+
+    @Then("the Selenium documentation page should be displayed")
+    public void theSeleniumDocumentationPageShouldBeDisplayed() {
+        OnStage.theActorInTheSpotlight().should(
+                seeThat(
+                        DocumentationHeading.displayed(),
+                        containsString("The Selenium Browser Automation Project")
+                )
         );
     }
 
