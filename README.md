@@ -89,7 +89,7 @@ git --version
 ## Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/juanchacongranados/qa-automation-challenge.git
 cd qa-automation-challenge
 ```
 
@@ -112,6 +112,10 @@ mvn test
 ```
 
 ## Serenity Reports
+
+The latest Serenity BDD execution report is publicly available at:
+
+https://juanchacongranados.github.io/qa-automation-challenge/serenity/
 
 After running:
 
